@@ -1,0 +1,62 @@
+$small-font: 0.8em;
+$color-dark-font: green;
+$color-light-font: rgb(3, 184, 3);
+
+@mixin grid-content() {
+  grid-column: 1 / -1;
+  padding: 0px 15px;
+}
+
+.card {
+  width: 250px;
+  border: 1px dotted rgb(240, 236, 236);
+  box-shadow: 0px 0px 10px 1px rgb(90, 89, 89);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "photo"
+    "header"
+    "summary"
+    "publish"
+    "info";
+}
+.img-card {
+  width: 250px;
+  height: auto;
+  grid-area: photo;
+  grid-column: 1 / -1;
+}
+.title-card {
+  grid-area: header;
+  @include grid-content();
+}
+.content-card {
+  grid-area: summary;
+  @include grid-content();
+  text-align: justify;
+  font-size: $small-font;
+}
+.published-card {
+  grid-area: publish;
+  @include grid-content();
+  font-size: $small-font;
+  text-align: right;
+  > span {
+    color: $color-dark-font;
+  }
+}
+.btn-card {
+  grid-area: info;
+  grid-column: 1 / -1;
+  margin: 0px 15px 10px 15px;
+  padding: 10px;
+  color: white;
+  background-color: $color-dark-font;
+  border: 0px;
+  &:hover {
+    background-color: $color-light-font;
+    cursor: pointer;
+  }
+}
